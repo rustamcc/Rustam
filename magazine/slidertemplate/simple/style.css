@@ -1,0 +1,67 @@
+/*
+Theme Name:slider
+Author:Universam
+Version:1.0
+*/
+/*
+Theme Name:Слайдер
+*/
+.slider .slide{
+	min-height: 500px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+}
+.slider .slide .box{
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	text-align: center;
+	position: absolute;
+	top: 50%;  left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2222;
+	padding: 25px;
+}
+.slider .slide .box .title{
+	font-size: 3em;
+}
+.slider .slide .box .desc{
+	margin: 20px 0;
+	font-size: 2em;
+}
+.slider .slick-dots{
+	position: absolute;
+	bottom: 1%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.slider .slick-dots li{
+	display: inline-block;
+	margin: 0 3px;
+}
+.slider .slick-dots li button{
+	width: 15px;
+	height: 15px;
+	background-color: #000;
+	color: #000;
+	border: 1px solid #000;
+	border-radius: 100%;
+	opacity: 0.7;
+}
+.slider .slick-dots li button:hover, .slider .slick-dots .slick-active button{
+	cursor: pointer;
+	background-color: #dd1f26;
+	color: #dd1f26;
+	border: 1px solid #dd1f26;
+}
+@media all and (max-width: 800px) {
+	.slider .slide{
+		min-height: 350px;
+	}
+}
+@media all and (max-width: 500px) {
+	.slider {
+		display: none;
+	}
+}
