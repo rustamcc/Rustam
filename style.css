@@ -551,6 +551,7 @@ header,
 	padding: 10px 15px;
 	width: 60%;
 }
+.subscribe_for_newsletter-box .subscribe_for_newsletter-button,
 .subscribe_for_newsletter-box .subscribe_for_newsletter-bottom{
 	float: none;
 	position: static;
@@ -563,6 +564,7 @@ header,
 	padding: 10px 15px;
 	text-align: center;
 }
+.subscribe_for_newsletter-box .subscribe_for_newsletter-button:hover,
 .subscribe_for_newsletter-box .subscribe_for_newsletter-bottom:hover{
 	background-color: #dd1f26;
 }

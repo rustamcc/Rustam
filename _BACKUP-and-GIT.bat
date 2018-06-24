@@ -15,5 +15,11 @@ set second=%TIME:~6,2%
 set qdate=%dd%-%mm%-%yyyy%
 set qtime=%hour%-%minute%-%second%
 
-
 "C:\Program Files\7-Zip\7z.exe" a -tzip -ssw -mx0 -r0 %destination%\%qdate%\%qdate%_%qtime%.zip %source%
+
+
+git add .
+git commit -v
+git pull
+git push
+git pull
