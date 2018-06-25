@@ -1,7 +1,4 @@
 
-/*
-*	Индивидуальные стили / Оформление
-*/
 .centered__divider{
 	height: 2px;
 	background: rgba(255,255,255,0.5);
@@ -58,9 +55,10 @@
 .footer__ct a{
 	text-decoration: underline;
 }
-/*
-*	Индивидуальные стили / Расположение
-*/
+
+
+
+
 .top-head__name{
 	line-height: 170px;
 }

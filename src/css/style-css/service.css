@@ -25,7 +25,6 @@
 .bg-clr-3{background-color: $clr-3;}
 
 .clr-4{color: $clr-4;}
-/*.centered{color: $clr-4;}*/
 
 .bg-clr-4,
 body{background-color: $clr-4;}
@@ -105,6 +104,9 @@ header,
 .border{
 	border: 1px solid #ddd;
 }
+
+
+
 /*
 *	Расположение (flex, margin, etc..)
 */

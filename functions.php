@@ -39,26 +39,34 @@ register_nav_menus( array(
 	'footer_menu' => 'Меню в подвале',
 	'sn_menu' => 'Соц.сети в подвале'
 ) );
-/*
-*
-*/
+
+// Убираем стиль dashicons для неавторизованных
+add_action('wp_print_styles', 'mytheme_dequeue_css_from_plugins', 100);
+function mytheme_dequeue_css_from_plugins() {
+	if ( ! is_user_logged_in() ) {
+		wp_dequeue_style( "dashicons" );
+	}
+}
+
 add_action( 'wp_enqueue_scripts', 'magazine_scripts_styles', 1 );
 function magazine_scripts_styles()
 {
-	wp_enqueue_style( 'main', get_stylesheet_uri(), array ( 'usam-theme', 'usam-form', 'usam-technical', 'usam-chat' ) );
-	wp_enqueue_script( 'main_js', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'slick-j' ) );
+	wp_enqueue_style( 'main', get_stylesheet_uri(), array('usam-form', 'usam-theme', 'usam-chat', 'usam-technical') );
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.3.1.min.js', array(), '3.3.1' );
 }
+
+add_action( 'wp_footer', 'footer_scripts', 1 );
 function footer_scripts(){
 	wp_enqueue_style( 'font-RobotoCondensed', '//fonts.googleapis.com/css?family=Roboto+Condensed');
 	wp_enqueue_style( 'icons-font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css' );
+	wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.3.1.min.js', false, false );
 	wp_enqueue_script( 'slick-j', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array( 'jquery' ) );
 	wp_enqueue_style( 'slick-c', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+	wp_enqueue_script( 'main_js', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'slick-j' ) );
 }
-add_action( 'wp_footer', 'footer_scripts', 1 );
+
 /*
-*
+*	button
 */
 function button_addtocart( array $args = array() ){
 	if ( empty( $args["product_has_stock"] ) ){ $args["product_has_stock"] = true; }
@@ -79,7 +87,7 @@ function button_addtocart( array $args = array() ){
 	echo $r;
 }
 /*
-*
+*	customizer
 */
 add_action('customize_register', function($customizer){
 	$customizer->add_section(

@@ -1,22 +1,44 @@
 /*
 *	Глобальные стили
 */
-*{ margin: 0; padding: 0; outline:none; }
-html, body{
+*{ 
+	margin: 0; 
+	padding: 0; 
+	outline:none;
+}
+
+html, 
+body{
 	background-color: $clr-white;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 15px;
 }
-li{ list-style-type: none; }
-a{ color: $clr-1; text-decoration: none; outline: none; }
-a:hover{ color: $clr-2; }
+
+li{ 
+	list-style-type: none; 
+}
+
+a{ 
+	color: $clr-1; 
+	text-decoration: none; 
+	outline: none; 
+}
+
+a:hover{ 
+	olor: $clr-2; 
+}
+
 button:hover,
 button:focus{
 	cursor: pointer;
 }
+
 input,
 button,
-i{ outline:none; } 
+i{ 
+	outline:none;
+} 
+
 .top-header-box, 
 #content{
 	width: $width;
