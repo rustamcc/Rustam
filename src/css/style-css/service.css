@@ -1,0 +1,221 @@
+/*
+*	Оформление (цвет, шрифт, размер, etc..)
+*/
+.tt-u{text-transform: uppercase;}
+.td-lt{	text-decoration:line-through;}
+
+.clr-1,
+.user-menu-box a:hover,
+.ats__sn a:hover,
+.footer__ct a:hover{color: $clr-1;}
+
+.bg-clr-1,
+.top-icon-basket{background-color: $clr-1;}
+
+.clr-2,
+.top-header-box .top-head__name a:hover,
+.ats__tags a:hover,
+.footer__links li a:hover,
+.footer__links li.current_page_item a{color: $clr-2;}
+
+.bg-clr-2{background-color: $clr-2;}
+
+.clr-3{color: $clr-3;}
+
+.bg-clr-3{background-color: $clr-3;}
+
+.clr-4{color: $clr-4;}
+/*.centered{color: $clr-4;}*/
+
+.bg-clr-4,
+body{background-color: $clr-4;}
+
+.clr-5,
+.user-menu-box a,
+.blog-card__date,
+.blog-card__text{color: $clr-5;}
+
+.bg-clr-5{background-color: $clr-5;}
+
+.clr-6{color: $clr-6;}
+.bg-clr-6{background-color: $clr-6;}
+
+.clr-7{color: $clr-7;}
+.bg-clr-7{background-color: $clr-7;}
+
+.clr-8{color: $clr-8;}
+.bg-clr-8{background-color: $clr-8;}
+
+.clr-9{color: $clr-9;}
+.bg-clr-9{background-color: $clr-9;}
+
+.clr-10{color: $clr-10;}
+.bg-clr-10{background-color: $clr-10;}
+
+.clr-11{color: $clr-11;}
+.bg-clr-11{background-color: $clr-11;}
+
+.clr-12{color: $clr-12;}
+.bg-clr-12{background-color: $clr-12;}
+
+.clr-13{color: $clr-13;}
+.bg-clr-13{background-color: $clr-13;}
+
+.clr-14{color: $clr-14;}
+.bg-clr-14{background-color: $clr-14;}
+
+.clr-15{color: $clr-15;}
+.bg-clr-15{background-color: $clr-15;}
+
+.clr-white{color: $clr-white;}
+
+.bg-clr-white,
+header,
+.top-head__hamburger button,
+.top-icon-basket .bot,
+.blog-card,
+#fb-slider {background-color: $clr-white;}
+
+.clr-black,
+.top-menu1__search-icon:hover {color: $clr-black;}
+
+.bg-clr-black{background-color: $clr-black;}
+
+.f0-8em{
+	font-size: 0.8em;
+}
+.f0-9em{
+	font-size: 0.9em;
+}
+.f1-3em{
+	font-size: 1.3em;
+}
+.f1-5em{
+	font-size: 1.5em;
+}
+.f1-7em{
+	font-size: 1.7em;
+}
+.f2em{
+	font-size: 2em;
+}
+.hover-pointer:hover{
+	cursor: pointer;
+}
+.border{
+	border: 1px solid #ddd;
+}
+/*
+*	Расположение (flex, margin, etc..)
+*/
+.df{
+	display: flex;
+}
+.jc-c{
+	justify-content: center;
+}
+.jc-sa{
+	justify-content: space-around;
+}
+.jc-sb{
+	justify-content: space-between;
+}
+.fd-c{
+	flex-direction: column;
+}
+.fg-1{
+	flex-grow: 1;
+}
+.ai-s{
+	align-items: stretch;
+}
+.ai-c{
+	align-items: center;
+}
+.ai-fe{
+	align-items: flex-end;
+}
+.fw-w{
+	flex-wrap: wrap;
+}
+.ta-c{
+	text-align: center;
+}
+.ta-r{
+	text-align: right;
+}
+.va-m{
+	vertical-align: middle;
+}
+.pa{
+	position: absolute;
+}
+.pr{
+	position: relative;
+}
+.pf{
+	position: fixed;
+}
+.db{
+	display: block;
+}
+.dib{
+	display: inline-block;
+}
+.dn{
+	display: none;
+}
+.cb{
+	clear: both;
+}
+.oh{
+	overflow: hidden;
+}
+.margin-lr-auto{
+	margin-left: auto;
+	margin-right: auto;
+}
+.centered{
+	top: 50%;  left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.border-box{
+	box-sizing: border-box;
+}
+.w33{
+	width: 33%;
+}
+.w50{
+	width: 50%;
+}
+.b0{
+	border: 0;
+}
+.fr{
+	float: right;
+}
+.p10{
+	padding: 10px;
+}
+.p20{
+	padding: 20px;
+}
+.p20-0{
+	padding: 20px 0;
+}
+.m-t10{
+	margin-top: 10px;
+}
+.m-t20{
+	margin-top: 20px;
+}
+.m-b20{
+	margin-bottom: 20px !important;
+}
+.m-r20{
+	margin-right: 20px;
+}
+.ws-n{
+	white-space: nowrap;
+}
