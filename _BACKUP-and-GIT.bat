@@ -1,21 +1,24 @@
 @echo off
 
 set source="E:\Sync\OSPanel\domains\wordpress\wp-content\themes\Rustam\"
-set destination="E:\Sync\Google\Backup\"
+set destination="E:\Sync\Google\Backup"
 set passwd=""
 
 set dd=%DATE:~0,2%
 set mm=%DATE:~3,2%
 set yyyy=%DATE:~6,4%
 
-set hour=%TIME:~0,2%
-set minute=%TIME:~3,2%
-set second=%TIME:~6,2%
+set h=%TIME:~0,2%
+if "%h:~0,1%" == " " set h=0%h:~1,1%
+set m=%TIME:~3,2%
+set s=%TIME:~6,2%
 
 set qdate=%dd%-%mm%-%yyyy%
-set qtime=%hour%-%minute%-%second%
+set qtime=%dd%-%mm%-%yyyy%_%h%-%m%-%s%
 
-"C:\Program Files\7-Zip\7z.exe" a -tzip -ssw -mx0 -r0 %destination%\%qdate%\%qdate%_%qtime%.zip %source%
+echo time - %qtime%
+
+"C:\Program Files\7-Zip\7z.exe" a -tzip -ssw -mx0 -r0 %destination%\%qdate%\%qtime%.zip %source%
 
 
 git add .
