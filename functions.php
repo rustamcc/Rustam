@@ -40,14 +40,6 @@ register_nav_menus( array(
 	'sn_menu' => 'Соц.сети в подвале'
 ) );
 
-// Убираем стиль dashicons для неавторизованных
-add_action('wp_print_styles', 'mytheme_dequeue_css_from_plugins', 100);
-function mytheme_dequeue_css_from_plugins() {
-	if ( ! is_user_logged_in() ) {
-		wp_dequeue_style( "dashicons" );
-	}
-}
-
 add_action( 'wp_enqueue_scripts', 'magazine_scripts_styles', 1 );
 function magazine_scripts_styles()
 {
@@ -59,11 +51,25 @@ add_action( 'wp_footer', 'footer_scripts', 1 );
 function footer_scripts(){
 	wp_enqueue_style( 'font-RobotoCondensed', '//fonts.googleapis.com/css?family=Roboto+Condensed');
 	wp_enqueue_style( 'icons-font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css' );
-	wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.3.1.min.js', false, false );
-	wp_enqueue_script( 'slick-j', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'jquery', '//code.jquery.com/jquery-3.3.1.min.js#asyncload', false, false );
+	wp_enqueue_script( 'slick-j', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js#asyncload', array( 'jquery' ) );
 	wp_enqueue_style( 'slick-c', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
-	wp_enqueue_script( 'main_js', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'slick-j' ) );
+	wp_enqueue_script( 'main_js', get_template_directory_uri() . '/js/main.js#asyncload', array( 'jquery', 'slick-j' ) );
 }
+
+
+// Async load
+function ikreativ_async_scripts($url)
+{
+    if ( strpos( $url, '#asyncload') === false )
+        return $url;
+    else if ( is_admin() )
+        return str_replace( '#asyncload', '', $url );
+    else
+	return str_replace( '#asyncload', '', $url )."' async='async"; 
+    }
+add_filter( 'clean_url', 'ikreativ_async_scripts', 11, 1 );
+
 
 /*
 *	button

@@ -7,6 +7,6 @@
 				</div>
 			</div>
 
-			<?php usam_display_product_groups( array('query' => 'popularity', 'template' => 'items_carousel', 'limit' => 4) ) ?>
+			<?php usam_display_product_groups( array('query' => 'popularity', 'template' => 'items_carousel', 'limit' => 10) ) ?>
 
 		</div>

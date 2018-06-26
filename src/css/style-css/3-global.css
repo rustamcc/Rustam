@@ -21,7 +21,7 @@ li{
 a{ 
 	color: $clr-1; 
 	text-decoration: none; 
-	outline: none; 
+	outline: none;
 }
 
 a:hover{ 
