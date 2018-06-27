@@ -103,7 +103,7 @@ if ( post_password_required() )
 			<?php } ?>
 
 			<div>
-				<div class="single-product__line"><?php _e('Артикул:', 'usam'); ?>  <span class="clr-10"><?php echo usam_get_product_meta($product_id , 'sku' ); ?></span></div>
+				<div class="single-product__line"><?php _e('Артикул:', 'usam'); ?>  <span class="clr-10" id="product_sku_<?php echo $product_id; ?>"><?php echo usam_get_product_meta($product_id , 'sku' ); ?></span></div>
 			</div>
 
 			<div>Поделиться:</div>

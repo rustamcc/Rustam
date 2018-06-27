@@ -75,8 +75,6 @@
 
 					</div>
 				<?php  endwhile; ?>
-			</div>
-
 			<div class = "product_footer_box">	
 				<?php do_action('usam_product_before_description', $product_id, $wp_query->post); ?>
 			</div>
@@ -87,3 +85,4 @@
 			?><h3 class="head_msg"><?php _e('Нет сейчас предложения для Вас', 'usam');?></h3><?php
 		}
 		?>
+	</div>

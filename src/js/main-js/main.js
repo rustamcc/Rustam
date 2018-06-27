@@ -171,7 +171,18 @@ $('.addtocart').on('click', function() {
 	if(!count) { count = 1; }
 	var c = "";
 
-	$.post(product_link+"?usam_ajax_action=add_to_cart",{product_id: product_id, usam_action: "add_to_cart",usam_quantity: count}, function(data)
+	var select_variation = $('.usam_select_variation');
+	var variation = select_variation.val();
+	
+	if( variation == 0){
+		show_tooltip(select_variation, "Выберите вариант товара", 2000);
+		select_variation.addClass('bg-clr-2 clr-white');
+		setTimeout(function(){ select_variation.removeClass('bg-clr-2 clr-white') }, 1000);
+		setTimeout(function(){ obj_elem.attr("data-disabled", "0"); }, 1000);
+		return false;
+	}
+
+	$.post(product_link+"?usam_ajax_action=add_to_cart",{product_id: product_id, usam_action: "add_to_cart",usam_quantity: count, variation: variation}, function(data)
 	{
 		var resp = JSON.parse(data);
 		if( resp.is_successful ){
@@ -372,8 +383,6 @@ function show_tooltip(obj_elem, text, time){
 	if (!obj_elem) return;
 	if (!time) time = 2000;
 	var tooltip = $('<div>', { class: 'tooltip', text: text, css: {  } }).appendTo("body");
-
-	console.log( obj_elem.offset() );
 
 	// top: obj_elem.offset().top - tooltip.outerHeight() - 5,
 	tooltip.css({
