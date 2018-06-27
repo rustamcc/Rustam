@@ -3,217 +3,87 @@
 ?>
 <div>
 	<div id="content" class="margin-lr-auto">
-<?php
-global $post;
-if ( usam_product_count() != 0 )
-{ 
-	while ( usam_have_products() ) : 
-		usam_the_product();	
-		
-$product_id = $post->ID;	
-$product_has_stock = usam_product_has_stock( );
 
-for ($i=0; $i < 3; $i++) { 
-	# code...
-
-?>
-<div class="product_header">
-<h1 itemprop="name" class="name"><?php the_title();?></h1>		
-<div class="usam_article_product">
-	<div class ="title_sku"><?php _e('Артикул:', 'usam'); ?></div>
-	<div id='product_sku_<?php echo $product_id; ?>'><?php echo usam_get_product_meta($product_id , 'sku' ); ?></div>
-	<div class='average_vote'><?php echo usam_get_product_rating( ); ?></div>			
-</div>	
-<?php 	
-if ( post_password_required() ) 
-{
-	echo get_the_password_form();
-	return;
-}	
-usam_single_image( ); 
-if( usam_is_product_discount() )
-{ ?>
-	<div class="single_percent_action">
-		<?php //echo __('Скидка', 'usam')." ".usam_you_save()."%"; ?>
-		<?php _e('Акция', 'usam'); ?>
-	</div>
-<?php } ?>
-<div class="productcol special_offer">							
-	<?php do_action( 'usam_product_addon_after_descr', $product_id ); ?>				
-	<div class="grid_1">							
-		<div class="purchase_terms">
-			<ul>						
-				<?php 
-				if( $product_has_stock )
-				{ 							
-					?>
-					<li><strong>Этот товар в наличии</strong><br></li>
-					<?php 
-				}							
-				?>
-				<li><a href="" id = "warehouses_buttom" class="usam_modal"><strong>Наличие в магазинах</strong><br>
-				<span class = "stock_store">Нажми<span></a></li>
-				<?php 
-				$customer_location = usam_get_customer_location();						
-				if ( $customer_location == 981 )
-				{
-				?>							
-					<li class = "normal"><strong>Бесплатная доставка*</strong><br>						
-						<span class = "stock_store">							
-							<?php if ( date_i18n( "H" ) > 14 ) { ?>	на следующий день*<?php } else { ?>сегодня при наличии на складе!<?php } ?><span></li>	
-				<?php 
-				}
-				else
-				{	
-					?>
-					<li class = "normal"><strong>Доставка в ваш регион</strong><br></li>	
-					<?php 
-				}
-				?>
-				<li class = "normal"><strong>Работаем</strong><br>
-				каждый день</li>										
-				<li class = "normal"><strong>Возврат товара</strong><br>
-				если он вам не подошел</li>	
-				<li class = "normal"><strong>Ассортимент</strong><br>
-				4000 товаров и 50 брендов</li>													
-			<ul>
-		</div>				
-	</div>
-	
-	<div class="grid_2">				
-	<form class="product_form" enctype="multipart/form-data" action="<?php echo usam_this_page_url(); ?>" method="post" name="1" id="product_<?php echo $product_id; ?>">	
-		<?php do_action ( 'usam_product_form_fields_begin' ); ?>			
-	
-		<div class="usam_product_price">					
-			<div class="price_print store_price">
-				<?php 
-				$arg = array( 'output_you_save' => false, 'output_old_price' => false );
-				usam_the_product_price_display( $arg ); 
-				?>					
-				<?php if(usam_product_has_multicurrency()) : ?>
-					<?php echo usam_display_product_multicurrency(); ?>
-				<?php endif; ?>					
-			</div>
-			<div class="usam_price_comparison">
-					<?php usam_feedback_link( 'price_comparison', __('Есть дешевле?','usam') ); ?> 
-				</div>
-			<div class="price_print offline_store_price">
-				<?php 							
-				$offline_store_price = usam_get_product_price($product_id, 'tp_0');
-				if ( $offline_store_price )
-				{
-					?>		
-					<div class="price_name">
-						В розничном магазине:
-					</div>
-					<div class="price_print">
-						<?php echo usam_currency_display(usam_get_product_price($product_id, 'tp_0')); ?>
-					</div>		
-					<?php 							
-				}
-				?>								
-			</div>
-		</div>
-
-		<div id="usam_quantity" class="usam_quantity">					
-			<?php 
-			if(usam_has_multi_adding() && $product_has_stock)
-			{ 				
-				$stock = usam_get_product_meta($product_id , 'stock' );	
-				?>					
-				<div class="qu_box">	
-					<input type="button" value="-" class="minus b_quantity" data-title = "Уменьшить количество"/>
-					<input type="text" class="quantity_update" id="usam_quantity_update_<?php echo $product_id; ?>" name="usam_quantity" size="2" value="1" />	
-					<input type="button" value="+" class="plus b_quantity" data-title = "Увеличить количество" data-stock = "<?php echo $stock; ?>" />
-				</div>	
-			<?php }?>					
-		</div>		
-		
-		<?php 
-		if( usam_hide_addtocart_button() ) 
-		{ 
-			if($product_has_stock) 
+		<div class = "wish_list products_grid bg-clr-white m-t10">
+			<?php
+			global $post;
+			if ( usam_product_count() != 0 )
 			{ 
-				?>
-				<div class="usam_buy_button_blok">							
-					<div class="quick_purchase">
-						<a href="#quick_purchase" id = "usam_quick_purchase" class="usam_modal_feedback button">Быстрая покупка</a>
-					</div>
-					<?php usam_addtocart_button(); ?>
-				</div>
-			<?php 
-			} 
-			else 
-			{ 
-				$storage = usam_get_product_meta($product_id,'storage', true);
-				if ( $storage > 0 ) 
-				{
+				while ( usam_have_products() ) : 
+					usam_the_product();	
+					
+					$product_id = get_the_ID();
+					$product_link = usam_the_product_permalink();
+					$product_has_stock = usam_product_has_stock();	
+					$cat = wp_get_post_terms( $product_id , 'usam-category' );
+					$brand = usam_product_brand( $product_id );
+					$thumbnail = @usam_the_product_thumbnail( $product_id, array(250,200) );
+					$thumbnail = $thumbnail["src"];
+					if( empty($cat) ) {
+						$cat_url = "";
+						$cat_name = "";
+					}
+					else {
+						$cat_url = $cat[0]->slug;
+						$cat_name = $cat[0]->name;
+					}
+					$sale = usam_you_save();
 					?>
-					<div class="soldout">							
-						<p class="soldout-title"><?php _e('Этот товар доступен в розничном магазине.', 'usam'); ?></p></br>
-						<a href="#buy_product" id="usam_buy_product" class="usam_modal_feedback button button_buy">Заказать по цене <?php usam_product_price_currency( ); ?>	?</a>
+					<div class="tt-u item-card">			
+						<div class="item-card__head pr ta-c df jc-c oh">
+
+							<div class="item-card__img" style="background-image: url(<?php echo $thumbnail; ?>);"></div>
+
+							<?php $desired_class = usam_checks_product_from_customer_list( 'desired' )?'clr-2':'clr-1'; ?>
+							<a class="item-card__like pa add_fc <?php echo $desired_class; ?>" href="index.php?product_id=<?php echo $product_id; ?>&usam_ajax_action=desired_product" data-ajax_action="desired_product" data-product_id="<?php echo $product_id; ?>">
+								<i class="fas fa-heart"></i>
+							</a>
+
+							<div class="item-card__rating pa f0-8em">
+								<?php echo usam_get_product_rating( $product_id, false ); ?>
+							</div>
+							<a href="<?php echo $product_link; ?>" class="item-card__quick-view pa clr-white bg-clr-2" data-product_id="<?php echo $product_id; ?>"><i class="far fa-window-restore"></i> Быстрый просмотр</a>
+						</div>
+						<?php if( usam_is_product_discount() ) { ?>
+							<div class="item-card__tag bg-clr-2 clr-white pa tt-u">-<?php echo $sale; ?>%</div>
+						<?php } ?>
+						<div class="item-card__name oh item-card__body"><a href="<?php echo $product_link; ?>"><?php the_title(); ?></a></div>
+
+						<div class="item-card__category item-card__body">
+							<?php if( ! empty($cat) ) { ?>
+								<a href="<?php echo get_option('siteurl'); ?>/product-category/<?php echo $cat_url; ?>/"><?php echo $cat_name; ?></a>
+							<?php } elseif ( ! empty($brand) ) { ?>
+								<a href="<?php echo usam_brand_url( $brand->term_id ); ?>"><?php echo $brand->name; ?></a>
+							<?php } else{ ?>
+								<span class="clr-10">...</span>
+							<?php } ?>
+						</div>
+
+						<hr class="item-card__divider clr-4 bg-clr-4" /> 
+
+						<div class="item-card__footer df jc-sb">
+							<div>
+								<?php if( usam_is_product_discount() ) { ?>
+									<span class="clr-9 f0-9em td-lt"><?php usam_product_price_currency( true ); ?></span>
+								<?php } ?>
+								<span class="clr-2"><?php echo usam_product_price_currency(); ?></span>
+							</div>
+							<div class="item-card__add">
+								<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "class" => "clr-7 button_mini" ) ); ?>
+							</div>
+						</div>
+
 					</div>
-					<?php						
-				}
-				else
-				{
-					?>
-					<div class="soldout">							
-						<p class="soldout-title"><?php _e('Этот товар продан.', 'usam'); ?></p>		
-					</div>
-					<?php
-				}					
-			} 
-		} 
-		?>		
-		<?php usam_select_product_variation(); ?>						
-		<div class="special_offer_box">
-			<div class="special_offer_info">				
-				<div class = "time"><?php _e('До конца продаж','usam'); ?><div id="countdown"></div></div>				
+				<?php  endwhile; ?>
 			</div>
-		</div>
-		<?php do_action ( 'usam_product_form_fields_end' ); ?>
-	</form>				
-		<div class="categories_title">
+
+			<div class = "product_footer_box">	
+				<?php do_action('usam_product_before_description', $product_id, $wp_query->post); ?>
+			</div>
 			<?php 
-			$brand = usam_product_brand( $product_id );
-			if ( !empty($brand) )
-			{
-				$brands_image = usam_brand_image( $brand->term_id );						
-				if ( !empty($brands_image) )
-				{
-				?>
-				<a title ='<?php printf(__('Посмотреть все товары бренда %s','usam'),$brand->name); ?>' href='<?php echo usam_brand_url( $brand->term_id ); ?>'>
-					<img class="brands_image" alt="<?php echo $brand->name; ?>" width="150" height="50" src="<?php echo $brands_image; ?>"/>
-				</a>
-			<?php } 
-				else
-				{
-					?>
-					<h3><?php _e('Бренд', 'usam'); ?>:</h3>					
-					<span><?php echo "<a class = 'brand_link' title ='".__('Посмотреть все товары бренда','usam')."' href='".usam_brand_url( $brand->term_id )."'>". $brand->name."</a>";	?></span>	
-					<?php						
-				}
-			} ?>					
-		</div>	
-	</div>	
-	<div class="grid_3">
-	</div>										
-</div>	
-</div>	
-<!------------------------------------------------------------------------------------------------------------------------------>
-<?php } endwhile; ?>
-<div class = "product_footer_box">	
-	<?php 	
-	usam_product_tabs(); 	
-	usam_products_for_buyers();		
-	do_action('usam_product_before_description', $product_id, $wp_query->post); 	
-	?>
-</div>
-<?php 
-}
-else 
-{
-	?><h3 class="head_msg"><?php _e('Нет сейчас предложения для Вас', 'usam');?></h3><?php
-}
-?>
+		}
+		else 
+		{
+			?><h3 class="head_msg"><?php _e('Нет сейчас предложения для Вас', 'usam');?></h3><?php
+		}
+		?>
