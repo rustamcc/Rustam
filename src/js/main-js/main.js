@@ -17,6 +17,8 @@ $(function() {
 	var menu1_box = ".top-menu1__box";
 	var clr_menu1_box = $(menu1_box).css('border-color');
 
+	show_single_img(null);
+
 //	Форма поиска в шапке
 $(search_icon).on('click', function() {
 
@@ -364,6 +366,21 @@ $('.loading').on('click', function() {
 	$(this).html('<i class="fas fa-spinner fa-pulse"></i>');
 	$(this).width(w);
 });
+
+/*
+*	Отображение галерее на странице товара
+*/
+$('.gallery_product img').on('click', function() {
+	show_single_img($(this));
+});
+function show_single_img(obj_elem){
+	if( obj_elem == null )
+		obj_elem = $('.gallery_product img').eq(0)
+	if(obj_elem)
+		$('.main_single_img').html('<img src="'+obj_elem.attr('src')+'" alt="'+document.title+'">');
+	return false;
+}
+
 
 function show_tab(elem, ind){
 	$(elem).hide();

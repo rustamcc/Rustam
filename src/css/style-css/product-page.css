@@ -46,3 +46,24 @@
 .product_day .text .buy:hover{
 	background-color: $clr-2;
 }
+
+/*
+*	Страница одного товара
+*	Фото галерея
+*/
+.single-product__photos{
+	margin-right: 20px;
+}
+.main_single_img{
+	min-height: 400px;
+	max-height: 400px;
+}
+.main_single_img img{
+	width: 100%;
+}
+.gallery_product img{
+	height: 100px;
+}
+.gallery_product img:hover{
+	cursor: pointer;
+}

@@ -461,6 +461,7 @@
 	opacity: 0.9;
 }
 /* Кнопки слайдера */
+.gallery_product .slick-arrow,
 .slider-carousel .slick-arrow{
 	z-index: 2;
 	position: absolute;
@@ -474,13 +475,16 @@
 	border: 0;
 	opacity: 0.5;
 }
+.gallery_product .slick-arrow:hover,
 .slider-carousel .slick-arrow:hover{
 	cursor: pointer;
 	color: #dd1f26;
 }
+.gallery_product .slick-next,
 .slider-carousel .slick-next{
 	right: 0;
 }
+.gallery_product .slick-prev,
 .slider-carousel .slick-prev{
 	left: 0;
 }
