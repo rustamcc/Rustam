@@ -22,7 +22,13 @@ $thumbnail = $thumbnail["src"];
 			<span class="clr-2"><?php usam_product_price_currency( ); ?></span>
 		</div>
 		<div class="item-card__add">
-			<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "class" => "clr-7 button_mini" ) ); ?>
+			<?php if( usam_product_has_variations( $product_id ) ) { ?> 
+				<a href="<?php echo $product_link; ?>" class="hover-pointer clr-7">
+					<i class="fas fa-bars"></i>
+				</a>
+			<?php } else {?>
+				<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "class" => "clr-7 button_mini" ) ); ?>
+			<?php } ?>
 		</div>
 	</div>
 </div>

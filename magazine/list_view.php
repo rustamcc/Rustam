@@ -66,25 +66,34 @@ if ( usam_display_products() ) { ?>
 							<?php if( usam_is_product_discount() ) { ?>
 								<span class="clr-9 f0-9em td-lt"><?php usam_product_price_currency( true ); ?></span>
 							<?php } ?>
-							<span class="clr-2"><?php usam_product_price_currency( ); ?></span>
+							<span class="clr-2 ws-n"><?php usam_product_price_currency( ); ?></span>
 						</div>
 
 						<div class="list_item-add df">
-							<?php
-							if( usam_has_multi_adding() && $product_has_stock && usam_get_product_price( $product_id ) > 0 )
-							{ 				
-								$stock = usam_get_product_meta($product_id , 'stock' );	
-								?>					
-								<div class="quantity df">
-									<input type="button" value="-" class="quantity__plusminus hover-pointer bg-clr-2 clr-white b0 p10" data-product_id="<?php echo $product_id; ?>">
-									<input type="number"  class="quantity__count bg-clr-13 clr-white ta-c b0" step="1" min="1" max="<?php echo $stock; ?>" name="quantity_count_<?php echo $product_id; ?>" value="1" pattern="[0-9]*" inputmode="numeric" data-product_id="<?php echo $product_id; ?>">
-									<input type="button" value="+" class="quantity__plusminus hover-pointer bg-clr-2 clr-white b0 p10" data-product_id="<?php echo $product_id; ?>">
-								</div>
+
+							<?php if( usam_product_has_variations( $product_id ) ) { ?> 
+								<a href="<?php echo $product_link; ?>" class="button_big bg-clr-2 clr-white b0 p10 ws-n">
+									<i class="fas fa-bars"></i> Посмотреть
+								</a>
+							<?php } else {?>
+
+								<?php
+								if( usam_has_multi_adding() && $product_has_stock && usam_get_product_price( $product_id ) > 0 )
+								{ 				
+									$stock = usam_get_product_meta($product_id , 'stock' );	
+									?>					
+									<div class="quantity df">
+										<input type="button" value="-" class="quantity__plusminus hover-pointer bg-clr-2 clr-white b0 p10" data-product_id="<?php echo $product_id; ?>">
+										<input type="number"  class="quantity__count bg-clr-13 clr-white ta-c b0" step="1" min="1" max="<?php echo $stock; ?>" name="quantity_count_<?php echo $product_id; ?>" value="1" pattern="[0-9]*" inputmode="numeric" data-product_id="<?php echo $product_id; ?>">
+										<input type="button" value="+" class="quantity__plusminus hover-pointer bg-clr-2 clr-white b0 p10" data-product_id="<?php echo $product_id; ?>">
+									</div>
+								<?php } ?>
+
+								<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "text" => "Добавить в корзину", "class" => "button_big bg-clr-2 clr-white b0 p10 ws-n" ) ); ?>
+
 							<?php } ?>
-							<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "text" => "Добавить в корзину", "class" => "button_big bg-clr-2 clr-white b0 p10 ws-n" ) ); ?>
 						</div>
 					</div>
-
 				</div>
 
 

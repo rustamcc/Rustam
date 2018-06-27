@@ -14,8 +14,8 @@
 	{				
 		$price = usam_get_product_price_currency( $product->ID );
 		$product_id = $product->ID;
-		$product_link = usam_the_product_permalink();
-		$product_has_stock = usam_product_has_stock($product_id);	
+		$product_link = usam_the_product_permalink($product_id);
+		$product_has_stock = usam_product_has_stock($product_id);
 		?>
 		<div class="tt-u item-card m-b20 ">			
 			<div class="item-card__head pr ta-c df jc-c oh">
@@ -28,7 +28,13 @@
 					<?php echo $price; ?>
 				</div>
 				<div class="item-card__add">
-					<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "class" => "clr-7 button_mini" ) ); ?>
+					<?php if( usam_product_has_variations( $product_id ) ) { ?> 
+						<a href="<?php echo $product_link; ?>" class="hover-pointer clr-7">
+							<i class="fas fa-bars"></i>
+						</a>
+					<?php } else {?>
+						<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "class" => "clr-7 button_mini" ) ); ?>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

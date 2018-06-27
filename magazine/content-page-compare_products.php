@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$product_id = $post->ID;
 							$product_has_stock = usam_product_has_stock();	
 							$aggregate_reviews = usam_get_aggregate_reviews( $product_id );	
-							$product_link = '';					
+							$product_link = usam_the_product_permalink();					
 							?>
 							<td>
 								<div class="image">
@@ -51,7 +51,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</div>							
 								<div class="price compare_line ta-c"><?php echo usam_get_product_price_currency( $product_id ); ?></div>
 								
-								<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "text" => "Добавить в корзину", "class" => "button_big bg-clr-2 clr-white b0 p10 f0-8em dib" ) ); ?>
+								<div class="ta-c">
+									<?php if( usam_have_variation_groups() ) { ?> 
+										<a href="<?php echo $product_link; ?>" class="hover-pointer button_big bg-clr-2 clr-white b0 p10 f0-8em dib">
+											<i class="fas fa-bars"></i> Посмотреть
+										</a>
+									<?php } else {?>
+										<?php button_addtocart( array( "product_has_stock" => $product_has_stock, "product_id" => $product_id, "product_link" => $product_link, "text" => "Добавить в корзину", "class" => "button_big bg-clr-2 clr-white b0 p10 f0-8em dib" ) ); ?>
+									<?php } ?>
+								</div>
 							</td>						
 							<?php
 						}					
