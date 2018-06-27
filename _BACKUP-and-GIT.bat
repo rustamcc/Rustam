@@ -1,4 +1,4 @@
-set source="E:\Sync\OSPanel\domains\wordpress\wp-content\themes\Rustam\"
+set source="E:\Sync\OSPanel\domains\word.press\wp-content\themes\Rustam\"
 set destination="E:\Sync\Google\Backup"
 set passwd=""
 
