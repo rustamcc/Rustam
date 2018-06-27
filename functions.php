@@ -103,6 +103,31 @@ function button_addtocart( array $args = array() ){
 	$r .= '<i class="fas fa-plus-circle"></i> '.$args["text"].'</a>';
 	echo $r;
 }
+
+/*
+*	Получаем "Изображение страницы"
+*/
+function get_main_post_img( $product_id ){
+	if( empty( $product_id ) ) return false;
+	$post_thumbnail_id = get_post_thumbnail_id( $product_id );
+	$main_post_img = wp_get_attachment_image_src( $post_thumbnail_id, 'full' ); 
+	if( ! empty( $main_post_img ) ){
+		return $main_post_img[0];
+	}
+}
+
+/*
+*	Получаем "Галерею товара"
+*/
+function get_product_images( $product_id ){
+	if( empty( $product_id ) ) return false;
+	$product_images = usam_get_product_images( $product_id );		
+	if ( ! empty( $product_images ) ) 
+	{
+		return $product_images;
+	}
+}
+
 /*
 *	customizer
 */

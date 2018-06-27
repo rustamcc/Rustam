@@ -28,28 +28,26 @@ if ( post_password_required() )
 
 			<div class="main_single_img"></div>
 			<div class="gallery_product">
-			<?php
+				<?php
 			/*
 			*	Получаем "Изображение страницы"
 			*/
-			$post_thumbnail_id = get_post_thumbnail_id( $product_id );
-			$main_post_img = wp_get_attachment_image_src( $post_thumbnail_id, 'full' ); 
-			if( ! empty( $main_post_img ) ){
-				echo '<img src="'.$main_post_img[0].'">';
-			}
+			echo '<img src="'.get_main_post_img($product_id).'" alt="'.get_the_title().'">';
 			/*
 			*	Получаем "Галерею товара"
 			*/
-			$product_images = usam_get_product_images( $product_id );		
+			$product_images = get_product_images( $product_id );
 			if ( ! empty( $product_images ) ) 
 			{
 				foreach ( $product_images as $product_image ) 
 				{	
-					$image = wp_get_attachment_image_src($product_image->ID, "full" );
-					if( ! empty( $image ) ){
-						echo '<img src="'.$image[0].'">';
+					if( ! empty( $product_image ) ){
+						$image = wp_get_attachment_image_src($product_image->ID, "full" );
+						if( ! empty( $image ) ){
+							echo '<img src="'.$image[0].'" alt="'.get_the_title().'">';
+						}
 					}
-				}			
+				}
 			}
 			?>
 		</div>
