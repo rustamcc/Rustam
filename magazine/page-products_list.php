@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; 
 }
 get_header( 'shop' );
-
 ?>
 <div>
 	<div id="content" class="margin-lr-auto">

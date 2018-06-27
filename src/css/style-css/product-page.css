@@ -18,3 +18,31 @@
 	border-color: #ddd;
 	padding: 5px;
 }
+
+/*
+*	Товар дня ( вверху страницы)
+*/
+.usam_product_display{
+	text-align: center;
+}
+.product_day{
+	background-color: #fff;
+	border-color: #ccc;
+}
+.product_day h3{
+	color: $clr-2;
+}
+.product_day .text .price{
+	float: none;
+}
+.product_day .text .p_price{
+	color: $clr-2;
+}
+.product_day .text .buy{
+	display: block;
+	float: none;
+	margin: 0;
+}
+.product_day .text .buy:hover{
+	background-color: $clr-2;
+}

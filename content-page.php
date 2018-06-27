@@ -5,6 +5,8 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content bg-clr-white">
+		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
+		
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -18,6 +20,6 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
+	
 
 </article><!-- #post-## -->

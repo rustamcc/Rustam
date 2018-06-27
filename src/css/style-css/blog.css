@@ -1,0 +1,31 @@
+/*
+*	WP страницы
+*/
+.entry-content p{
+	padding: 5px 0;
+}
+.entry-content blockquote{
+	padding: 10px 20px;
+	background-color: #efefef;
+}
+.entry-content li{
+	padding: 5px 0;
+}
+.entry-content a{
+	text-decoration: underline;
+}
+.entry-content a:hover{
+	color: $clr-2;
+}
+.entry-content .edit-link{
+	background-color: #eee;
+	padding: 10px;
+	margin: 10px;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #eee;
+	border-radius: 10px;
+}
+.entry-content .edit-link a:hover{
+	color: $clr-2;
+}

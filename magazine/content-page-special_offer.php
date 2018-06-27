@@ -1,7 +1,8 @@
 <?php
 // Описание: Страница "Специальное предложения" или "Товар Дня"
 ?>
-
+<div>
+	<div id="content" class="margin-lr-auto">
 <?php
 global $post;
 if ( usam_product_count() != 0 )
@@ -10,7 +11,11 @@ if ( usam_product_count() != 0 )
 		usam_the_product();	
 		
 $product_id = $post->ID;	
-$product_has_stock = usam_product_has_stock( );		
+$product_has_stock = usam_product_has_stock( );
+
+for ($i=0; $i < 3; $i++) { 
+	# code...
+
 ?>
 <div class="product_header">
 <h1 itemprop="name" class="name"><?php the_title();?></h1>		
@@ -197,7 +202,7 @@ if( usam_is_product_discount() )
 </div>	
 </div>	
 <!------------------------------------------------------------------------------------------------------------------------------>
-<?php endwhile; ?>
+<?php } endwhile; ?>
 <div class = "product_footer_box">	
 	<?php 	
 	usam_product_tabs(); 	
