@@ -1,4 +1,4 @@
-set source="E:\Sync\OSPanel\domains\word.press\wp-content\themes\Rustam\"
+set source="E:\Sync\OSPanel\domains\wordpress.local\wp-content\themes\Rustam\"
 set destination="E:\Sync\Google\Backup"
 set passwd=""
 
@@ -18,7 +18,7 @@ echo time - %qtime%
 
 "C:\Program Files\7-Zip\7z.exe" a -tzip -ssw -mx0 -r0 %destination%\%qdate%\%qtime%.zip %source%
 
-cd E:\Sync\OSPanel\domains\wordpress\wp-content\themes\Rustam
+cd E:\Sync\OSPanel\domains\wordpress.local\wp-content\themes\Rustam
 git add .
 git commit -v
 git pull

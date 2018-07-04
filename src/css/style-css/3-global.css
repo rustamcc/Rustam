@@ -25,7 +25,7 @@ a{
 }
 
 a:hover{ 
-	olor: $clr-2; 
+	color: $clr-2; 
 }
 
 button:hover,

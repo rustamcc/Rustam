@@ -1,2 +1,3 @@
+e:
 cd E:\Sync\OSPanel\domains\
-gulp css js
+gulp -f gulpfile-wordpress.js css js

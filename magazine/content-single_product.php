@@ -32,7 +32,10 @@ if ( post_password_required() )
 			/*
 			*	Получаем "Изображение страницы"
 			*/
-			echo '<img src="'.get_main_post_img($product_id).'" alt="'.get_the_title().'">';
+			$main_post_img = get_main_post_img($product_id);
+			if( ! empty( $main_post_img) ) {
+				echo '<img src="'.$main_post_img.'" alt="'.get_the_title().'">';
+			}
 			/*
 			*	Получаем "Галерею товара"
 			*/
